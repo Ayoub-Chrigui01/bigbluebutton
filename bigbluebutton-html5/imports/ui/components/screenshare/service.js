@@ -203,6 +203,8 @@ const shareScreen = async (isPresenter, onFail) => {
         console.log("video width :" , width , "video height : " , height);
 
         const ratio = width / cropOptions.width;
+
+        console.log("ratio is :" , ratio)
       
         // Set canvas size to match cropped region
         // const cropWidth = 320; // Adjust to desired width
