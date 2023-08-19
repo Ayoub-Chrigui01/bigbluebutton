@@ -265,9 +265,11 @@ const shareScreen = async (isPresenter, onFail) => {
         return stream;
       };
   
-      const newStream = getNewStream();
-      await KurentoBridge.share(newStream, onFail);
+      // const newStream = getNewStream();
+      stream = getNewStream();
     })
+
+    await KurentoBridge.share(stream, onFail);
 
     if (!isPresenter) {
       MediaStreamUtils.stopMediaStreamTracks(stream);
