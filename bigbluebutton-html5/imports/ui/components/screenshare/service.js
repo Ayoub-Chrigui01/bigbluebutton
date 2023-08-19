@@ -226,7 +226,11 @@ const shareScreen = async (isPresenter, onFail) => {
             234,
             1106,
             2336,
-            500
+            500,
+            0,
+            0,
+            2336,
+            500,
           );
           // context.drawImage(
           //   videoElement,
