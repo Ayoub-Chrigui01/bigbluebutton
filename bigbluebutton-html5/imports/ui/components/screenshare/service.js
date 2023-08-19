@@ -238,7 +238,6 @@ const shareScreen = async (isPresenter, onFail) => {
             cropOptions.height,
             0,
             0,
-            width,height,
             cropOptions.width,
             cropOptions.height,
           );
