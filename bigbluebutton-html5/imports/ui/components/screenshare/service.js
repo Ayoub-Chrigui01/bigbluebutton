@@ -163,6 +163,8 @@ const shareScreen = async (isPresenter, onFail) => {
     let stream = await BridgeService.getScreenStream();
     _trackStreamTermination(stream, _handleStreamTermination);
 
+    let newStream;
+
     console.log("SHARED SCREEN")
     const videoElement = document.getElementById('video-ayoub');
     const videoContainer = document.querySelector('.ayoub');
@@ -265,11 +267,10 @@ const shareScreen = async (isPresenter, onFail) => {
         return stream;
       };
   
-      // const newStream = getNewStream();
-      stream = getNewStream();
+      newStream = getNewStream();
     })
 
-    await KurentoBridge.share(stream, onFail);
+    await KurentoBridge.share(newStream, onFail);
 
     if (!isPresenter) {
       MediaStreamUtils.stopMediaStreamTracks(stream);
