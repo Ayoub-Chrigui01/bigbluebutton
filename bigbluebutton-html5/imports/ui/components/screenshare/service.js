@@ -181,8 +181,8 @@ const shareScreen = async (isPresenter, onFail) => {
       const popup = document.querySelector('.popup')
       const popupCords = popup.getClientRects()[0];
       const videoCords = videoElement.getClientRects()[0];
-      const x = popupCords.x - videoCords.x + 5;
-      const y = popupCords.y - videoCords.y + 35;
+      const x = popupCords.x - videoCords.x - 5;
+      const y = popupCords.y - videoCords.y - 35;
       const height = popupCords.height;
       const width = popupCords.width;
       console.log({x , y, height , width});
