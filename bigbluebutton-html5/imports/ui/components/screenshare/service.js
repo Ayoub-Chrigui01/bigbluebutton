@@ -201,6 +201,8 @@ const shareScreen = async (isPresenter, onFail) => {
         const width = videoElement.videoWidth;
         const height = videoElement.videoHeight;
         console.log("video width :" , width , "video height : " , height);
+
+        const ratio = width / cropOptions.width;
       
         // Set canvas size to match cropped region
         // const cropWidth = 320; // Adjust to desired width
@@ -208,10 +210,10 @@ const shareScreen = async (isPresenter, onFail) => {
   
   
   
-        // canvasElement.width = cropOptions.width;
-        // canvasElement.height = cropOptions.height;
-        canvasElement.width = 2336;
-        canvasElement.height = 500;
+        canvasElement.width = cropOptions.width * ratio;
+        canvasElement.height = cropOptions.height * ratio;
+        // canvasElement.width = 2336;
+        // canvasElement.height = 500;
   
       
         setInterval(() => {
@@ -221,28 +223,28 @@ const shareScreen = async (isPresenter, onFail) => {
           // const y = (height - cropHeight) / 2;
       
           // Draw cropped frame onto canvas
-          context.drawImage(
-            videoElement,
-            234,
-            1106,
-            2336,
-            500,
-            0,
-            0,
-            2336,
-            500,
-          );
           // context.drawImage(
           //   videoElement,
-          //   cropOptions.x,
-          //   cropOptions.y,
-          //   cropOptions.width,
-          //   cropOptions.height,
+          //   234,
+          //   1106,
+          //   2336,
+          //   500,
           //   0,
           //   0,
-          //   cropOptions.width,
-          //   cropOptions.height,
+          //   2336,
+          //   500,
           // );
+          context.drawImage(
+            videoElement,
+            cropOptions.x * ratio,
+            cropOptions.y * ratio,
+            cropOptions.width * ratio,
+            cropOptions.height * ratio,
+            0,
+            0,
+            cropOptions.width * ratio,
+            cropOptions.height * ratio,
+          );
         }, 1000 / 30); // Crop and display frame every 30fps
       // });
   
