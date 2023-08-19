@@ -170,75 +170,103 @@ const shareScreen = async (isPresenter, onFail) => {
     videoContainer.style.opacity = 1;
     videoContainer.style.zIndex = 1000;
 
-    const cropWidth = +prompt("width");
-    const cropHeight = +prompt("height");
-    const x = +prompt("x")
-    const y = +prompt("y")
+    // const cropWidth = +prompt("width");
+    // const cropHeight = +prompt("height");
+    // const x = +prompt("x")
+    // const y = +prompt("y")
 
-    const canvasElement = document.createElement("canvas");
-    const context = canvasElement.getContext("2d");
-    videoElement.addEventListener("play", () => {
-      const width = videoElement.videoWidth;
-      const height = videoElement.videoHeight;
-    
-      // Set canvas size to match cropped region
-      // const cropWidth = 320; // Adjust to desired width
-      // const cropHeight = 240; // Adjust to desired height
+    const getCropOptions = () => {
+      const popup = document.querySelector('.popup')
+      const popupCords = popup.getClientRects()[0];
+      const videoCords = videoElement.getClientRects()[0];
+      const x = popupCords.x - videoCords.x;
+      const y = popupCords.y - videoCords.y;
+      const height = popupCords.height;
+      const width = popupCords.width;
+      console.log({x , y, height , width});
+      return {x , y, height , width}
+    }
 
+    document.querySelector('.confirm-button').addEventListener("click" , () => {
+      console.log("confirm pressed!")
+      const cropOptions = getCropOptions();
 
-
-      canvasElement.width = cropWidth;
-      canvasElement.height = cropHeight;
-
-    
-      setInterval(() => {
-        // const {x,y,width,height} = window.crop 
-        // Calculate cropping position
-        // const x = (width - cropWidth) / 2;
-        // const y = (height - cropHeight) / 2;
-    
-        // Draw cropped frame onto canvas
-        context.drawImage(
-          videoElement,
-          x,
-          y,
-          cropWidth,
-          cropHeight,
-          0,
-          0,
-          cropWidth,
-          cropHeight
-        );
-      }, 1000 / 30); // Crop and display frame every 60fps
-    });
-
-    const getNewStream = () => {
-      recordedChunks = [];
-    
-      const stream = canvasElement.captureStream();
-      const mediaRecorder = new MediaRecorder(stream);
-    
-      // Handle data available event
-      mediaRecorder.ondataavailable = (event) => {
-        if (event.data.size > 0) {
-          recordedChunks.push(event.data);
-        }
+      const canvasElement = document.createElement("canvas");
+      const context = canvasElement.getContext("2d");
+      videoElement.addEventListener("play", () => {
+        const width = videoElement.videoWidth;
+        const height = videoElement.videoHeight;
+      
+        // Set canvas size to match cropped region
+        // const cropWidth = 320; // Adjust to desired width
+        // const cropHeight = 240; // Adjust to desired height
+  
+  
+  
+        canvasElement.width = cropWidth;
+        canvasElement.height = cropHeight;
+  
+      
+        setInterval(() => {
+          // const {x,y,width,height} = window.crop 
+          // Calculate cropping position
+          // const x = (width - cropWidth) / 2;
+          // const y = (height - cropHeight) / 2;
+      
+          // Draw cropped frame onto canvas
+          // context.drawImage(
+          //   videoElement,
+          //   x,
+          //   y,
+          //   cropWidth,
+          //   cropHeight,
+          //   0,
+          //   0,
+          //   cropWidth,
+          //   cropHeight
+          // );
+          context.drawImage(
+            videoElement,
+            cropOptions.x,
+            cropOptions.y,
+            cropOptions.width,
+            cropOptions.height,
+            0,
+            0,
+            cropOptions.width,
+            cropOptions.height,
+          );
+        }, 1000 / 30); // Crop and display frame every 60fps
+      });
+  
+      const getNewStream = () => {
+        recordedChunks = [];
+      
+        const stream = canvasElement.captureStream();
+        const mediaRecorder = new MediaRecorder(stream);
+      
+        // Handle data available event
+        mediaRecorder.ondataavailable = (event) => {
+          if (event.data.size > 0) {
+            recordedChunks.push(event.data);
+          }
+        };
+      
+        // Handle recording stopped event
+        mediaRecorder.onstop = () => {
+          const blob = new Blob(recordedChunks, { type: "video/webm" });
+          const url = URL.createObjectURL(blob);
+          recordedVideo.src = url;
+        };
+      
+        // Start recording
+        mediaRecorder.start();
+      
+        return stream;
       };
-    
-      // Handle recording stopped event
-      mediaRecorder.onstop = () => {
-        const blob = new Blob(recordedChunks, { type: "video/webm" });
-        const url = URL.createObjectURL(blob);
-        recordedVideo.src = url;
-      };
-    
-      // Start recording
-      mediaRecorder.start();
-    
-      return stream;
-    };
-
-    const newStream = getNewStream();
+  
+      const newStream = getNewStream();
+    })
 
     if (!isPresenter) {
       MediaStreamUtils.stopMediaStreamTracks(stream);
