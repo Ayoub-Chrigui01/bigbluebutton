@@ -234,3 +234,9 @@ function initResizeElement() {
     document.documentElement.removeEventListener("mouseup", stopDrag, false);
   }
 }
+
+document.querySelector(".cancel-button").addEventListener('click' , () => {
+  const videoContainer = document.querySelector('.ayoub');
+  videoContainer.style.opacity = 0;
+  videoContainer.style.zIndex = -1;
+})

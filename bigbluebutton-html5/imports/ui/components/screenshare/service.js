@@ -160,7 +160,7 @@ const shareScreen = async (isPresenter, onFail) => {
   }
 
   try {
-    const stream = await BridgeService.getScreenStream();
+    let stream = await BridgeService.getScreenStream();
     _trackStreamTermination(stream, _handleStreamTermination);
 
     console.log("SHARED SCREEN")
