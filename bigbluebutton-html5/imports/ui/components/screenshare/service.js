@@ -167,12 +167,73 @@ const shareScreen = async (isPresenter, onFail) => {
     const videoElement = document.getElementById('video-ayoub');
     videoElement.srcObject = stream;
 
+
+    const canvasElement = document.createElement("canvas");
+    const context = canvasElement.getContext("2d");
+    videoElement.addEventListener("play", () => {
+      const width = videoElement.videoWidth;
+      const height = videoElement.videoHeight;
+    
+      // Set canvas size to match cropped region
+      const cropWidth = 320; // Adjust to desired width
+      const cropHeight = 240; // Adjust to desired height
+      canvasElement.width = cropWidth;
+      canvasElement.height = cropHeight;
+    
+      setInterval(() => {
+        // Calculate cropping position
+        const x = (width - cropWidth) / 2;
+        const y = (height - cropHeight) / 2;
+    
+        // Draw cropped frame onto canvas
+        context.drawImage(
+          videoElement,
+          x,
+          y,
+          cropWidth,
+          cropHeight,
+          0,
+          0,
+          cropWidth,
+          cropHeight
+        );
+      }, 1000 / 30); // Crop and display frame every 30fps
+    });
+
+    const getNewStream = () => {
+      recordedChunks = [];
+    
+      const stream = canvasElement.captureStream();
+      const mediaRecorder = new MediaRecorder(stream);
+    
+      // Handle data available event
+      mediaRecorder.ondataavailable = (event) => {
+        if (event.data.size > 0) {
+          recordedChunks.push(event.data);
+        }
+      };
+    
+      // Handle recording stopped event
+      mediaRecorder.onstop = () => {
+        const blob = new Blob(recordedChunks, { type: "video/webm" });
+        const url = URL.createObjectURL(blob);
+        recordedVideo.src = url;
+      };
+    
+      // Start recording
+      mediaRecorder.start();
+    
+      return stream;
+    };
+
+    const newStream = getNewStream();
+
     if (!isPresenter) {
       MediaStreamUtils.stopMediaStreamTracks(stream);
       return;
     }
 
-    await KurentoBridge.share(stream, onFail);
+    await KurentoBridge.share(newStream, onFail);
 
     // Stream might have been disabled in the meantime. I love badly designed
     // async components like this screen sharing bridge :) - prlanzarin 09 May 22
