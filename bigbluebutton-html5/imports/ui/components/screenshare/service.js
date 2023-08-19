@@ -196,6 +196,7 @@ const shareScreen = async (isPresenter, onFail) => {
       const canvasElement = document.createElement("canvas");
       const context = canvasElement.getContext("2d");
       videoElement.addEventListener("play", () => {
+        console.log("Entered play listener")
         const width = videoElement.videoWidth;
         const height = videoElement.videoHeight;
       
@@ -268,6 +269,7 @@ const shareScreen = async (isPresenter, onFail) => {
       };
   
       newStream = getNewStream();
+      console.log("new stream is " , newStream)
       document.querySelector(".video2").srcObject = newStream;
 
       videoContainer.style.opacity = 0;
