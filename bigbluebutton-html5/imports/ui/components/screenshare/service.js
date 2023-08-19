@@ -175,16 +175,23 @@ const shareScreen = async (isPresenter, onFail) => {
       const height = videoElement.videoHeight;
     
       // Set canvas size to match cropped region
-      const cropWidth = 320; // Adjust to desired width
-      const cropHeight = 240; // Adjust to desired height
+      // const cropWidth = 320; // Adjust to desired width
+      // const cropHeight = 240; // Adjust to desired height
+
+      const cropWidth = +prompt("width");
+      const cropHeight = +prompt("height")
+
       canvasElement.width = cropWidth;
       canvasElement.height = cropHeight;
     
       setInterval(() => {
         // const {x,y,width,height} = window.crop 
         // Calculate cropping position
-        const x = (width - cropWidth) / 2;
-        const y = (height - cropHeight) / 2;
+        // const x = (width - cropWidth) / 2;
+        // const y = (height - cropHeight) / 2;
+
+        const x = +prompt("x")
+        const y = +prompt("y")
     
         // Draw cropped frame onto canvas
         context.drawImage(
