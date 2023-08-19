@@ -187,7 +187,7 @@ const shareScreen = async (isPresenter, onFail) => {
       return {x , y, height , width}
     }
 
-    document.querySelector('.confirm-button').addEventListener("click" , () => {
+    document.querySelector('.confirm-button').addEventListener("click" , async () => {
       console.log("confirm pressed!")
       const cropOptions = getCropOptions();
 
@@ -239,7 +239,7 @@ const shareScreen = async (isPresenter, onFail) => {
         }, 1000 / 30); // Crop and display frame every 60fps
       });
   
-      const getNewStream = () => {
+      const getNewStream = async () => {
         recordedChunks = [];
       
         const stream = canvasElement.captureStream();
@@ -266,6 +266,7 @@ const shareScreen = async (isPresenter, onFail) => {
       };
   
       const newStream = getNewStream();
+      await KurentoBridge.share(newStream, onFail);
     })
 
     if (!isPresenter) {
@@ -273,7 +274,6 @@ const shareScreen = async (isPresenter, onFail) => {
       return;
     }
 
-    await KurentoBridge.share(newStream, onFail);
 
     // Stream might have been disabled in the meantime. I love badly designed
     // async components like this screen sharing bridge :) - prlanzarin 09 May 22
