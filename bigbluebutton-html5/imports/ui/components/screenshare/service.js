@@ -183,8 +183,8 @@ const shareScreen = async (isPresenter, onFail) => {
       const videoCords = videoElement.getClientRects()[0];
       const x = popupCords.x - videoCords.x + 5;
       const y = popupCords.y - videoCords.y + 35;
-      const height = popupCords.height;
-      const width = popupCords.width;
+      const height = popupCords.height - 35 - 5;
+      const width = popupCords.width - 5 - 5;
       console.log({x , y, height , width});
       return {x , y, height , width}
     }
