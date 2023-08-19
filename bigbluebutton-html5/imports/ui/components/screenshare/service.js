@@ -200,6 +200,7 @@ const shareScreen = async (isPresenter, onFail) => {
       //   console.log("Entered play listener")
         const width = videoElement.videoWidth;
         const height = videoElement.videoHeight;
+        console.log("video width :" , width , "video height : " , height);
       
         // Set canvas size to match cropped region
         // const cropWidth = 320; // Adjust to desired width
