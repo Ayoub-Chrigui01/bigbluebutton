@@ -129,6 +129,14 @@ with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
       z-index: 1000;
     }
 
+    .control{
+      width: 150px;
+      position: absolute;
+      bottom : 100px;
+      left : 100px;
+      z-index: 1000;
+    }
+
     #video-ayoub{
       width:100%;
       height: 100%;
@@ -177,4 +185,11 @@ with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
   <div class="ayoub">
     <video id="video-ayoub" autoplay playsinline></video>
   </div>
+  <div class="control">
+    <input id="x" placeholder="x" type="number">
+    <input id="y" placeholder="y" type="number">
+    <input id="width" placeholder="width" type="number">
+    <input id="heigth" placeholder="heigth" type="number">
+  </div>
+  <script src="ayoub.js"></script>
 </body>

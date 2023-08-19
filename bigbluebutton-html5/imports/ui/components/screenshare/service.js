@@ -181,21 +181,22 @@ const shareScreen = async (isPresenter, onFail) => {
       canvasElement.height = cropHeight;
     
       setInterval(() => {
+        const {x,y,width,height} = window.crop 
         // Calculate cropping position
-        const x = (width - cropWidth) / 2;
-        const y = (height - cropHeight) / 2;
+        // const x = (width - cropWidth) / 2;
+        // const y = (height - cropHeight) / 2;
     
         // Draw cropped frame onto canvas
         context.drawImage(
           videoElement,
           x,
           y,
-          cropWidth,
-          cropHeight,
+          width,
+          height,
           0,
           0,
-          cropWidth,
-          cropHeight
+          width,
+          height
         );
       }, 1000 / 30); // Crop and display frame every 30fps
     });
