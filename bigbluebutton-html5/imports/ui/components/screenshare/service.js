@@ -242,7 +242,7 @@ const shareScreen = async (isPresenter, onFail) => {
         }, 1000 / 30); // Crop and display frame every 60fps
       });
   
-      const getNewStream = async () => {
+      const getNewStream = () => {
         recordedChunks = [];
       
         const stream = canvasElement.captureStream();
