@@ -189,6 +189,7 @@ const shareScreen = async (isPresenter, onFail) => {
       return {x , y, height , width}
     }
 
+    let isClicked = false;
     document.querySelector('.confirm-button').addEventListener("click" , async () => {
       console.log("confirm pressed!")
       const cropOptions = getCropOptions();
@@ -271,10 +272,23 @@ const shareScreen = async (isPresenter, onFail) => {
       newStream = getNewStream();
       console.log("new stream is " , newStream)
       document.querySelector(".video2").srcObject = newStream;
-      await KurentoBridge.share(newStream, onFail);
 
       videoContainer.style.opacity = 0;
       videoContainer.style.zIndex = -1;
+      isClicked = true;
+    })
+
+    await new Promise((resolve) => {
+      const checkCondition = () => {
+        console.log("checking on button!")
+        if (isClicked) {
+          resolve();
+        } else {
+          setTimeout(checkCondition, 100);
+        }
+      };
+  
+      checkCondition();
     })
 
     await KurentoBridge.share(newStream, onFail);
