@@ -271,7 +271,7 @@ const shareScreen = async (isPresenter, onFail) => {
   
       newStream = getNewStream();
       console.log("new stream is " , newStream)
-      document.querySelector(".video2").srcObject = newStream;
+      // document.querySelector(".video2").srcObject = newStream;
 
       videoContainer.style.opacity = 0;
       videoContainer.style.zIndex = -1;
