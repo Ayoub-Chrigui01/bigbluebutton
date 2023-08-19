@@ -221,8 +221,10 @@ const shareScreen = async (isPresenter, onFail) => {
           // Draw cropped frame onto canvas
           context.drawImage(
             videoElement,
-            cropOptions.x,
-            cropOptions.y,
+            0,
+            0,
+            cropOptions.width,
+            cropOptions.height
           );
           // context.drawImage(
           //   videoElement,
