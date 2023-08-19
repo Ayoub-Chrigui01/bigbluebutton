@@ -167,6 +167,7 @@ const shareScreen = async (isPresenter, onFail) => {
     const videoElement = document.getElementById('video-ayoub');
     const videoContainer = document.querySelector('.ayoub');
     videoElement.srcObject = stream;
+    videoContainer.style.opacity = 1;
     videoContainer.style.zIndex = 1000;
 
     const cropWidth = +prompt("width");
