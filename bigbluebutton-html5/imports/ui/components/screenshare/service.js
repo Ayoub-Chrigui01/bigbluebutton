@@ -229,19 +229,18 @@ const shareScreen = async (isPresenter, onFail) => {
           //   cropWidth,
           //   cropHeight
           // );
-          console.log("width : ", width , " and height : " , height)
+          // console.log("width : ", width , " and height : " , height)
           context.drawImage(
             videoElement,
-            0,0,width,height,
-            // cropOptions.x,
-            // cropOptions.y,
-            // cropOptions.width,
-            // cropOptions.height,
+            cropOptions.x,
+            cropOptions.y,
+            cropOptions.width,
+            cropOptions.height,
             0,
             0,
             width,height,
-            // cropOptions.width,
-            // cropOptions.height,
+            cropOptions.width,
+            cropOptions.height,
           );
         }, 1000 / 30); // Crop and display frame every 30fps
       // });
