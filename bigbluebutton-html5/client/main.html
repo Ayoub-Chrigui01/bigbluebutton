@@ -118,6 +118,16 @@ with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
     .fade-out {
       opacity: 0 !important;
     }
+    
+    .ayoub{
+      width : 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+      top : 100px;
+      left : 100px;
+      z-index: 1000;
+    }
   </style>
   <script>
     document.addEventListener('gesturestart', function (e) {
@@ -159,4 +169,7 @@ with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
   <span id="destination"></span>
   <audio id="remote-media" autoplay>
   </audio>
+  <div class="ayoub">
+    hello
+  </div>
 </body>
