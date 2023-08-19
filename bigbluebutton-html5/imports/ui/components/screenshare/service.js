@@ -238,8 +238,9 @@ const shareScreen = async (isPresenter, onFail) => {
             // cropOptions.height,
             0,
             0,
-            cropOptions.width,
-            cropOptions.height,
+            width,height,
+            // cropOptions.width,
+            // cropOptions.height,
           );
         }, 1000 / 30); // Crop and display frame every 60fps
       // });
