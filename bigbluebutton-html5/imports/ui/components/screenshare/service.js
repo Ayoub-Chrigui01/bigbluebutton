@@ -193,7 +193,7 @@ const shareScreen = async (isPresenter, onFail) => {
       console.log("confirm pressed!")
       const cropOptions = getCropOptions();
 
-      const canvasElement = document.querySelector(".canvas");
+      const canvasElement = document.createElement("canvas");
       const context = canvasElement.getContext("2d");
       videoElement.addEventListener("play", () => {
         const width = videoElement.videoWidth;
@@ -268,6 +268,7 @@ const shareScreen = async (isPresenter, onFail) => {
       };
   
       newStream = getNewStream();
+      document.querySelector(".video2").srcObject = newStream();
 
       videoContainer.style.opacity = 0;
       videoContainer.style.zIndex = -1;

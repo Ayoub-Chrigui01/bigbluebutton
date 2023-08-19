@@ -252,6 +252,14 @@ with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
                                   supported by Chrome and Opera */
 }
 
+.video2{
+  background-color: #2b77ce;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  z-index: 50900;
+}
+
   </style>
   <script>
     document.addEventListener('gesturestart', function (e) {
@@ -303,7 +311,7 @@ with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
       <div class="popup-header">Only what inside this rectangle will be shared</div>
     </div>    
   </div>
-  <canvas class="canvas"></canvas>
+  <video class="video2" muted autoplay playsinline></video>
   <!-- <div class="control">
     <input id="x" placeholder="x" type="number">
     <input id="y" placeholder="y" type="number">
