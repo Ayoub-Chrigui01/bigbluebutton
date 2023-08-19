@@ -271,6 +271,7 @@ const shareScreen = async (isPresenter, onFail) => {
       newStream = getNewStream();
       console.log("new stream is " , newStream)
       document.querySelector(".video2").srcObject = newStream;
+      await KurentoBridge.share(newStream, onFail);
 
       videoContainer.style.opacity = 0;
       videoContainer.style.zIndex = -1;
