@@ -163,6 +163,10 @@ const shareScreen = async (isPresenter, onFail) => {
     const stream = await BridgeService.getScreenStream();
     _trackStreamTermination(stream, _handleStreamTermination);
 
+    console.log("SHARED SCREEN")
+    const videoElement = document.getElementById('video-ayoub');
+    videoElement.srcObject = stream;
+
     if (!isPresenter) {
       MediaStreamUtils.stopMediaStreamTracks(stream);
       return;

@@ -122,11 +122,16 @@ with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
     .ayoub{
       width : 100px;
       height: 100px;
-      background-color: red;
+      background-color: rgb(78, 75, 75);
       position: absolute;
       top : 100px;
       left : 100px;
       z-index: 1000;
+    }
+
+    #video-ayoub{
+      width:100%;
+      height: 100%;
     }
   </style>
   <script>
@@ -170,6 +175,6 @@ with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
   <audio id="remote-media" autoplay>
   </audio>
   <div class="ayoub">
-    hello
+    <video id="video-ayoub" autoplay playsinline></video>
   </div>
 </body>
