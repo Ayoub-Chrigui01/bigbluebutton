@@ -231,8 +231,9 @@ const shareScreen = async (isPresenter, onFail) => {
           // );
           context.drawImage(
             videoElement,
-            cropOptions.x,
-            cropOptions.y,
+            // cropOptions.x,
+            // cropOptions.y,
+            0,0,
             cropOptions.width,
             cropOptions.height,
             0,
