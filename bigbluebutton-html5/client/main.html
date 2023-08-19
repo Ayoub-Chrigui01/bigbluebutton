@@ -150,6 +150,25 @@ with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
       overflow: hidden;
     }
 
+    .button-container{
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      gap : 5rem
+    }
+
+    .confirm-button,
+    .cancel-button{
+      background-color: white;
+      border: none;
+    }
+
+    .confirm-button:hover,
+    .cancel-button:hover{
+      cursor: pointer;
+      opacity: 0.8;
+    }
+
   /*******************************/
   /* Draggable and resizable div */
   /*******************************/
@@ -160,8 +179,8 @@ with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
   text-align: center;
   min-height: 150px;
   min-width: 300px;
-  max-height: 300px;
-  max-width: 600px;
+  max-height: 1920px;
+  max-width: 1080px;
 }
 
 /*Drgable */
@@ -173,7 +192,7 @@ with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
 }
 
 .popup-header {
-  padding: 10px;
+  padding: 5px;
   cursor: move;
   z-index: 10;
   background-color: green;
@@ -268,6 +287,10 @@ with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
   </audio>
   <div class="ayoub">
     <video id="video-ayoub" muted autoplay playsinline></video>
+    <div class="button-container">
+      <div class="confirm-button">Confirm</div>
+      <div class="cancel-button">Cancel</div>
+    </div>
     <div class="popup">
       <div class="popup-header">Only what inside this rectangle will be shared</div>
     </div>    
