@@ -202,7 +202,7 @@ const shareScreen = async (isPresenter, onFail) => {
         const height = videoElement.videoHeight;
         console.log("video width :" , width , "video height : " , height);
 
-        const ratio = width / videoElement.width;
+        const ratio = width / videoElement.clientWidth;
 
         console.log("ratio is :" , ratio)
       
