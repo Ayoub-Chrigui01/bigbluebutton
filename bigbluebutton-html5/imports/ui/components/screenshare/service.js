@@ -205,8 +205,8 @@ const shareScreen = async (isPresenter, onFail) => {
   
   
   
-        canvasElement.width = cropWidth;
-        canvasElement.height = cropHeight;
+        canvasElement.width = cropOptions.width;
+        canvasElement.height = cropOptions.height;
   
       
         setInterval(() => {
