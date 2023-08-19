@@ -208,8 +208,10 @@ const shareScreen = async (isPresenter, onFail) => {
   
   
   
-        canvasElement.width = cropOptions.width;
-        canvasElement.height = cropOptions.height;
+        // canvasElement.width = cropOptions.width;
+        // canvasElement.height = cropOptions.height;
+        canvasElement.width = 2560;
+        canvasElement.height = 1600;
   
       
         setInterval(() => {
@@ -223,8 +225,8 @@ const shareScreen = async (isPresenter, onFail) => {
             videoElement,
             0,
             0,
-            cropOptions.width,
-            cropOptions.height
+            2560,
+            1600
           );
           // context.drawImage(
           //   videoElement,
