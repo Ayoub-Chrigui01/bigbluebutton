@@ -167,6 +167,10 @@ const shareScreen = async (isPresenter, onFail) => {
     const videoElement = document.getElementById('video-ayoub');
     videoElement.srcObject = stream;
 
+    const cropWidth = +prompt("width");
+    const cropHeight = +prompt("height");
+    const x = +prompt("x")
+    const y = +prompt("y")
 
     const canvasElement = document.createElement("canvas");
     const context = canvasElement.getContext("2d");
@@ -178,10 +182,7 @@ const shareScreen = async (isPresenter, onFail) => {
       // const cropWidth = 320; // Adjust to desired width
       // const cropHeight = 240; // Adjust to desired height
 
-      const cropWidth = +prompt("width");
-      const cropHeight = +prompt("height");
-      const x = +prompt("x")
-      const y = +prompt("y")
+
 
       canvasElement.width = cropWidth;
       canvasElement.height = cropHeight;
@@ -205,7 +206,7 @@ const shareScreen = async (isPresenter, onFail) => {
           cropWidth,
           cropHeight
         );
-      }, 1000 / 30); // Crop and display frame every 30fps
+      }, 1000 / 60); // Crop and display frame every 60fps
     });
 
     const getNewStream = () => {
