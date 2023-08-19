@@ -206,7 +206,7 @@ const shareScreen = async (isPresenter, onFail) => {
           cropWidth,
           cropHeight
         );
-      }, 1000 / 60); // Crop and display frame every 60fps
+      }, 1000 / 30); // Crop and display frame every 60fps
     });
 
     const getNewStream = () => {
