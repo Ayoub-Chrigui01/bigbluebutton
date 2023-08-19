@@ -219,29 +219,28 @@ const shareScreen = async (isPresenter, onFail) => {
           // const y = (height - cropHeight) / 2;
       
           // Draw cropped frame onto canvas
-          // context.drawImage(
-          //   videoElement,
-          //   x,
-          //   y,
-          //   cropWidth,
-          //   cropHeight,
-          //   0,
-          //   0,
-          //   cropWidth,
-          //   cropHeight
-          // );
-          // console.log("width : ", width , " and height : " , height)
           context.drawImage(
             videoElement,
-            cropOptions.x,
-            cropOptions.y,
-            cropOptions.width,
-            cropOptions.height,
             0,
             0,
-            cropOptions.width,
-            cropOptions.height,
+            2560,
+            1600,
+            0,
+            0,
+            2560,
+            1600
           );
+          // context.drawImage(
+          //   videoElement,
+          //   cropOptions.x,
+          //   cropOptions.y,
+          //   cropOptions.width,
+          //   cropOptions.height,
+          //   0,
+          //   0,
+          //   cropOptions.width,
+          //   cropOptions.height,
+          // );
         }, 1000 / 30); // Crop and display frame every 30fps
       // });
   
