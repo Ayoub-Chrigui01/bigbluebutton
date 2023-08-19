@@ -195,8 +195,8 @@ const shareScreen = async (isPresenter, onFail) => {
 
       const canvasElement = document.createElement("canvas");
       const context = canvasElement.getContext("2d");
-      videoElement.addEventListener("play", () => {
-        console.log("Entered play listener")
+      // videoElement.addEventListener("play", () => {
+      //   console.log("Entered play listener")
         const width = videoElement.videoWidth;
         const height = videoElement.videoHeight;
       
@@ -240,7 +240,7 @@ const shareScreen = async (isPresenter, onFail) => {
             cropOptions.height,
           );
         }, 1000 / 30); // Crop and display frame every 60fps
-      });
+      // });
   
       const getNewStream = () => {
         recordedChunks = [];
