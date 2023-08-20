@@ -180,6 +180,8 @@ function initDragElement() {
   }
 }
 
+let globalRatio = undefined;
+
 function initResizeElement() {
   var popups = document.getElementsByClassName("popup");
   var element = null;
@@ -225,8 +227,18 @@ function initResizeElement() {
   }
 
   function doDrag(e) {
-    element.style.width = startWidth + e.clientX - startX + "px";
-    element.style.height = startHeight + e.clientY - startY + "px";
+    if (!globalRatio) {
+      element.style.width = startWidth + e.clientX - startX + "px";
+      element.style.height = startHeight + e.clientY - startY + "px";
+    }
+    if(globalRatio === 1) {
+      element.style.width = startWidth + e.clientX - startX + "px";
+      element.style.height = (startWidth + e.clientX - startX)* 9 / 16 + "px";
+    }
+    if(globalRatio === 2) {
+      element.style.width = startWidth + e.clientX - startX + "px";
+      element.style.height = (startWidth + e.clientX - startX)* 3 / 4 + "px";
+    }
   }
 
   function stopDrag() {
@@ -239,4 +251,24 @@ document.querySelector(".cancel-button").addEventListener('click' , () => {
   const videoContainer = document.querySelector('.ayoub');
   videoContainer.style.opacity = 0;
   videoContainer.style.zIndex = -1;
+})
+
+document.querySelector(".ratio-1").addEventListener('click' , () => {
+  this.classList.toggle("active");
+  if (globalRatio ===  1 ){
+    globalRatio = undefined
+  }
+  else{
+    globalRatio = 1;
+  } 
+})
+
+document.querySelector(".ratio-1").addEventListener('click' , () => {
+  this.classList.toggle("active");
+  if (globalRatio ===  2 ) {
+    globalRatio = undefined
+  }
+  else{
+    globalRatio = 2;
+  }
 })

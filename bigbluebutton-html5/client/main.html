@@ -162,13 +162,20 @@ with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
     }
 
     .confirm-button,
-    .cancel-button{
+    .cancel-button,
+    .ratio-1,
+    .ratio-2{
       background-color: white;
       border: none;
       color: #333333;
       padding: 0.5rem 1rem;
       font-size: 1.4rem;
       border-radius: 17px;
+    }
+
+    .active{
+      background-color: green;
+      color : white;
     }
 
     .confirm-button:hover,
@@ -302,6 +309,10 @@ with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
   <audio id="remote-media" autoplay>
   </audio>
   <div class="ayoub">
+    <div class="button-container">
+      <button class="ratio-1">16/9</button>
+      <button class="ratio-2">4/3</button>
+    </div>
     <video id="video-ayoub" muted autoplay playsinline></video>
     <div class="button-container">
       <button class="cancel-button">Cancel</button>
