@@ -263,7 +263,7 @@ document.querySelector(".ratio-1").addEventListener('click' , () => {
   } 
 })
 
-document.querySelector(".ratio-1").addEventListener('click' , () => {
+document.querySelector(".ratio-2").addEventListener('click' , () => {
   this.classList.toggle("active");
   if (globalRatio ===  2 ) {
     globalRatio = undefined
