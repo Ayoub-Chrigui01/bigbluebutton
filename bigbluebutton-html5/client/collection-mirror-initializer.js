@@ -253,8 +253,11 @@ document.querySelector(".cancel-button").addEventListener('click' , () => {
   videoContainer.style.zIndex = -1;
 })
 
-document.querySelector(".ratio-1").addEventListener('click' , () => {
-  this.classList.toggle("active");
+const ratio1 = document.querySelector('.ratio1')
+const ratio2 = document.querySelector('.ratio2')
+
+ratio1.addEventListener('click' , () => {
+  ratio1.classList.toggle("active");
   if (globalRatio ===  1 ){
     globalRatio = undefined
   }
@@ -263,8 +266,8 @@ document.querySelector(".ratio-1").addEventListener('click' , () => {
   } 
 })
 
-document.querySelector(".ratio-2").addEventListener('click' , () => {
-  this.classList.toggle("active");
+ratio2.addEventListener('click' , () => {
+  ratio2.classList.toggle("active");
   if (globalRatio ===  2 ) {
     globalRatio = undefined
   }
