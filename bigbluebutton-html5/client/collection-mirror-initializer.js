@@ -253,8 +253,8 @@ document.querySelector(".cancel-button").addEventListener('click' , () => {
   videoContainer.style.zIndex = -1;
 })
 
-const ratio1 = document.querySelector('.ratio1')
-const ratio2 = document.querySelector('.ratio2')
+const ratio1 = document.querySelector('.ratio-1')
+const ratio2 = document.querySelector('.ratio-2')
 
 ratio1.addEventListener('click' , () => {
   ratio1.classList.toggle("active");
