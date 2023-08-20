@@ -258,6 +258,7 @@ const ratio2 = document.querySelector('.ratio-2')
 
 ratio1.addEventListener('click' , () => {
   ratio1.classList.toggle("active");
+  ratio2.classList.remove("active")
   if (globalRatio ===  1 ){
     globalRatio = undefined
   }
@@ -268,6 +269,7 @@ ratio1.addEventListener('click' , () => {
 
 ratio2.addEventListener('click' , () => {
   ratio2.classList.toggle("active");
+  ratio1.classList.remove("active")
   if (globalRatio ===  2 ) {
     globalRatio = undefined
   }
