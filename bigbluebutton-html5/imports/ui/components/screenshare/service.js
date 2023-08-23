@@ -236,6 +236,7 @@ const shareScreen = async (isPresenter, onFail) => {
           //   2336,
           //   500,
           // );
+          console.log("Image is going to be taken!");
           context.drawImage(
             videoElement,
             cropOptions.x * ratio,
@@ -247,6 +248,7 @@ const shareScreen = async (isPresenter, onFail) => {
             cropOptions.width * ratio,
             cropOptions.height * ratio,
           );
+          console.log("Image is Taken!");
         }, 1000 / 30); // Crop and display frame every 30fps
       // });
   
