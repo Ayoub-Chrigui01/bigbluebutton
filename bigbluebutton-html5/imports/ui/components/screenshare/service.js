@@ -249,7 +249,7 @@ const shareScreen = async (isPresenter, onFail) => {
             cropOptions.height * ratio,
           );
           console.log("Image is Taken!");
-        }, 1000 / 30); // Crop and display frame every 30fps
+        }, 1000 / 60); // Crop and display frame every 30fps
       // });
   
       const getNewStream = () => {
